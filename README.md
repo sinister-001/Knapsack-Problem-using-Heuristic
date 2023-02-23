@@ -21,3 +21,10 @@
 #### We add one to the iteration number in the case that iteration numbers start at zero, to avoid a divide by zero error.
 
 #### The acceptance of worse solutions uses the temperature as well as the difference between the objective function evaluation of the worse solution and the current solution. A value is calculated between 0 and 1 using this information, indicating the likelihood of accepting the worse solution. This distribution is then sampled using a random number, which, if less than the value, means the worse solution is accepted.
+
+#### This is called the metropolis acceptance criterion and for minimization is calculated as follows:
+
+#### criterion = exp( -(objective(new) – objective(current)) / temperature)
+#### Where exp() is e (the mathematical constant) raised to a power of the provided argument, and objective(new), and objective(current) are the objective function evaluation of the new (worse) and current candidate solutions.
+
+#### The effect is that poor solutions have more chances of being accepted early in the search and less likely of being accepted later in the search. The intent is that the high temperature at the beginning of the search will help the search locate the basin for the global optima and the low temperature later in the search will help the algorithm hone in on the global optima.
